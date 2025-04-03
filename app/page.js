@@ -4,6 +4,8 @@ import Nav from "./components/Nav/page";
 import Landing from "./components/Landing/page";
 import Features from "./components/Features/page";
 import Statistics from "./components/Statistics/page";
+import Reviews from "./components/Reviews/page";
+import Numbers from "./components/Numbers/page";
 
 export default function Home() {
   return (
@@ -14,6 +16,8 @@ export default function Home() {
           <Landing />
           <Features />
           <Statistics />
+          <Reviews />
+          <Numbers />
         </div>
       </div>
     </body>
