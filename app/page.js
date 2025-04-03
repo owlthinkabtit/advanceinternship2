@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import Nav from "./components/Nav/page";
 import Landing from "./components/Landing/page";
 import Features from "./components/Features/page";
+import Statistics from "./components/Statistics/page";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
           <Nav />
           <Landing />
           <Features />
-
+          <Statistics />
         </div>
       </div>
     </body>
