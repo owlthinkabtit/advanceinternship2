@@ -6,6 +6,7 @@ import Features from "./components/Features/page";
 import Statistics from "./components/Statistics/page";
 import Reviews from "./components/Reviews/page";
 import Numbers from "./components/Numbers/page";
+import Footer from "./components/Footer/page";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
           <Statistics />
           <Reviews />
           <Numbers />
+          <Footer />
         </div>
       </div>
     </body>
