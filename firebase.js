@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDuerxmWzUNALjbX_sx77YZkd3-EKb0Zx8",
-  authDomain: "summarist-project-61a58.firebaseapp.com",
-  projectId: "summarist-project-61a58",
-  storageBucket: "summarist-project-61a58.firebasestorage.app",
-  messagingSenderId: "466255555508",
-  appId: "1:466255555508:web:247724a051edffa13f60e1",
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGE_ID,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);

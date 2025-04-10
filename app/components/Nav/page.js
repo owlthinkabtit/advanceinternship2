@@ -1,6 +1,10 @@
+
 import Image from "next/image"
+import { useAuth } from "@/context/AuthContext"
 
 export default function Nav() {
+  
+  
   return (
     <nav className="nav">
       <div className="nav__wrapper">

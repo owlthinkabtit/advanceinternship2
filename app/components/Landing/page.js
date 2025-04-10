@@ -1,3 +1,6 @@
+'use client'
+import { useAuth } from "@/context/AuthContext"
+
 export default function Landing() {
   return (
     <section id="landing">
@@ -17,7 +20,7 @@ export default function Landing() {
                 <br className="remove--tablet" />
                 and even people who don't like to read.
               </div>
-              <button className="btn home__cta--btn">Login</button>
+              <button onClick={() => setShowAuthModal(true)} className="btn home__cta--btn">Login</button>
             </div>
             <figure className="landing__image--mask">
               <img src="/landing.png" width={779} height={740} />
