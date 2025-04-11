@@ -2,6 +2,8 @@
 import { useAuth } from "@/context/AuthContext"
 
 export default function Landing() {
+  const { setShowAuthModal } = useAuth()
+  
   return (
     <section id="landing">
       <div className="container">

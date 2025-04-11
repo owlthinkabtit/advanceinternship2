@@ -1,9 +1,10 @@
 'use client'
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth"
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
 import { useState } from "react"
 import { auth } from "@/firebase"
 import { useAuth } from "@/context/AuthContext"
 import '@/app/authModal.css'
+import { FcGoogle } from "react-icons/fc";
 
 export default function AuthModal() {
   const { showAuthModal, setShowAuthModal } = useAuth()
@@ -11,6 +12,16 @@ export default function AuthModal() {
   const [password, setPassword] = useState('')
   const [isRegistering, setIsRegistering] = useState(false)
   const [error, setError] = useState('')
+
+  const handleGoogleSignIn = async () => {
+    const provider = new GoogleAuthProvider()
+    try {
+      await signInWithPopup(auth, provider)
+      setShowAuthModal(false)
+    } catch (err) {
+      setError(err.message)
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -41,43 +52,31 @@ export default function AuthModal() {
   if (!showAuthModal) return null
 
   return (
-    <div className="modal-overlay">
-      <div className="modal">
-        <button className="close-btn" onClick={() => setShowAuthModal(false)}>
-          ✕
-        </button>
+    <div className="auth-modal">
+      <h2 className="auth-title">Log in to Summarist</h2>
 
-        <h2>{isRegistering ? 'Register' : 'Login'}</h2>
+      <button className="guest-btn">
+        <span>👤</span> Login as a Guest
+      </button>
 
-        <form onSubmit={handleSubmit} className="auth-form">
-          <input
-            type="email"
-            placeholder="Email"
-            className="auth-input"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="auth-input"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {error && <p className="auth-error">{error}</p>}
-          <button type="submit" className="auth-button">
-            {isRegistering ? 'Register' : 'Login'}
-          </button>
-        </form>
+      <div className="auth-divider">or</div>
 
-        <button className="toggle-mode" onClick={() => setIsRegistering(!isRegistering)}>
-          {isRegistering ? 'Already have an account? Login' : "Don't have an account? Register"}
-        </button>
+      <button className="google-btn">
+        <FcGoogle /> Login with Google
+      </button>
 
-        <button className="guest-button" onClick={handleGuestLogin}>
-          Continue as Guest
-        </button>
-      </div>
+      <div className="auth-divider">or</div>
+
+      <input type="email" placeholder="Email Address" className="auth-input" />
+      <input type="password" placeholder="Password" className="auth-input" />
+
+      <button className="login-btn">Login</button>
+
+      <a href="#" className="forgot-link">Forgot your password?</a>
+      <p className="switch-mode">
+        Don’t have an account? <a href="#">Register</a>
+      </p>
     </div>
+
   )
 }
